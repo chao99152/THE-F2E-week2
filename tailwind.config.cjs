@@ -13,6 +13,11 @@ module.exports = {
       },
       colors: {
         'style1': '#51A8BC',
+        'style2': '#E2E1DD',
+        'style3': '#A5A39C',
+        'style4': '#4D4C52',
+        'style5': '#F9B471',
+        
       },
       container: {
         center: true,
@@ -53,16 +58,18 @@ module.exports = {
 
       backgroundColor: {
         'bg1': '#FFFAF4',
-        // 'bg2': '#F9D1FF',
-        // 'bg3': '#FDF7E8',
+        'bg2': '#EEEDE8',
       },
       borderRadius: {
         'px10': '10px',
         'px20': '20px',
-        'px30': '30px'
+        'px30': '30px',
+        'px35': '35px'
       },
       dropShadow: {
-        'shadow1': '0px 4px 1px rgba(0, 0, 0, 0.15)'
+        'shadow1': '0px 4px 1px rgba(0, 0, 0, 0.15)',
+        'shadow2': '0px 4px 4px #EEEDE8',
+        'shadow3': ' 8px 4px 4px rgba(238, 237, 232, 0.5)'
       },
     },
   },

@@ -6,7 +6,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Landingpage',
         component: () => import(/* webpackChunkName: "about" */ '../components/Landingpage.vue')
     },
-
+    {
+        path: '/signature',
+        name: 'Signature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Signature.vue')
+    },
 ]
 
 const router = createRouter({

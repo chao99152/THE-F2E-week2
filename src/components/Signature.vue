@@ -26,8 +26,12 @@
         bg-bg1 px-60">
             <div>a</div>
             <div class="flex justify-center items-center">
-                <div class="flex justify-center items-center w-44 h-14 rounded-full bg-white">取消</div>
-                <div class="flex justify-center items-center w-44 h-14 rounded-full bg-black">開啟文件</div>
+                <div class="flex justify-center items-center w-44 h-14 mr-3.5
+                    rounded-full text-style1 bg-white drop-shadow-shadow2 cursor-pointer">
+                    取消</div>
+                <div class="flex justify-center items-center w-44 h-14 
+                    rounded-full text-white bg-bg2 drop-shadow-shadow2 cursor-pointer">
+                    開啟文件</div>
             </div>
         </footer>
     </div>

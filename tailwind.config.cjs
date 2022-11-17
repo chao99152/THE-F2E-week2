@@ -17,7 +17,8 @@ module.exports = {
         'style3': '#A5A39C',
         'style4': '#4D4C52',
         'style5': '#F9B471',
-        
+
+
       },
       container: {
         center: true,
@@ -59,6 +60,7 @@ module.exports = {
       backgroundColor: {
         'bg1': '#FFFAF4',
         'bg2': '#EEEDE8',
+        'bg3': '#F9B471',
       },
       borderRadius: {
         'px10': '10px',
@@ -71,6 +73,13 @@ module.exports = {
         'shadow2': '0px 4px 4px #EEEDE8',
         'shadow3': ' 8px 4px 4px rgba(238, 237, 232, 0.5)'
       },
+      gradientColorStops: {
+        'gradbg1': '#FFFAF4 50%',
+        'gradbg2': '#F9B471 50%',
+      },
+      backgroundSize: {
+        'bgtrans1': '200% 100%'
+      }
     },
   },
   plugins: [],

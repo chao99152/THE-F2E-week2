@@ -7,8 +7,7 @@
                 <img src="../assets/img/LOGO.png" alt="" class="max-h-[25px] my-auto">
             </router-link>
 
-            <span v-if="router.currentRoute.value.path != '/'" 
-            class="tracking-[3px] border-l-2 border-l-style4 pl-3
+            <span v-if="router.currentRoute.value.path != '/'" class="tracking-[3px] border-l-2 border-l-style4 pl-3
             ">簽署新文件</span>
         </div>
 
@@ -16,9 +15,11 @@
          text-style1 font-bold tracking-[3.5px]">
             <div class="text-style2 select-none">邀請他人簽署</div>
             <router-link to="/Signature">
-                <div class="cursor-pointer" v-if="router.currentRoute.value.path == '/'">簽署新文件</div>
+                <div class="hover:text-style5 active:text-style5 focus:text-style5 transition-color duration-300 cursor-pointer select-none"
+                    v-if="router.currentRoute.value.path == '/'">簽署新文件</div>
             </router-link>
-            <div class="cursor-pointer" @click="toggleloginmodal">登入</div>
+            <div class="hover:text-style5 active:text-style5 focus:text-style5 transition-color duration-300 cursor-pointer select-none"
+                @click="toggleloginmodal">登入</div>
         </div>
 
         <teleport to='#modal'>
@@ -37,7 +38,6 @@ import { ref } from 'vue'
 import _ from 'lodash'
 import gsap_anim from '../composable/gsap'
 import router from '../router';
-
 
 const loginmodal_check = ref(false)
 const toggleloginmodal = _.throttle(() => loginmodal_check.value = !loginmodal_check.value, 800, { 'trailing': false })

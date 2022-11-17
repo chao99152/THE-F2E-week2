@@ -7,21 +7,28 @@
             <div class="h-[60px] flex justify-start items-center">
                 <div class="w-full h-full flex justify-center items-center 
                 tracking-[3px] rounded-t-px35  text-style5 bg-white drop-shadow-shadow3">上傳新文件</div>
-                <div class="w-full h-full flex justify-center items-center tracking-[3px] text-style1">選擇已上傳文件</div>
+                <div class="w-full h-full flex justify-center items-center tracking-[3px] text-style1 cursor-pointer">
+                    選擇已上傳文件</div>
             </div>
             <div class="h-full bg-white z-10 rounded-b-px35 p-[50px]">
                 <div id="upload_field" class="w-full h-full rounded-px35 bg-white hover:bg-bg1
-                flex-col justify-start items-center
-                cursor-pointer">
-                    <div>點擊此處上傳 或 直接拖曳檔案</div>
-                    <img src="../assets/img/pdf_icon.png" alt="">
+                flex flex-col justify-center items-center gap-8 cursor-pointer 
+                text-style3 text-lg font-notosans-light tracking-[5px] font-medium">
+                    <div->點擊此處上傳 或 直接拖曳檔案</div->
+                    <img src="../assets/img/pdf_icon.png" alt="" class="w-36 h-36">
+                    <div>(限10MB以下PDF檔)</div>
                 </div>
-
             </div>
         </div>
 
-        <footer class="absolute bottom-0 left-0 w-screen h-20 bg-bg1">
-
+        <footer class="absolute bottom-0 left-0 w-screen h-20 
+        flex justify-between items-center
+        bg-bg1 px-60">
+            <div>a</div>
+            <div class="flex justify-center items-center">
+                <div class="flex justify-center items-center w-44 h-14 rounded-full bg-white">取消</div>
+                <div class="flex justify-center items-center w-44 h-14 rounded-full bg-black">開啟文件</div>
+            </div>
         </footer>
     </div>
 </template>

@@ -7,19 +7,31 @@
                 <img src="../assets/img/LOGO.png" alt="" class="max-h-[25px] my-auto">
             </router-link>
 
-            <span v-if="router.currentRoute.value.path != '/'" class="tracking-[3px] border-l-2 border-l-style4 pl-3
-            ">簽署新文件</span>
+            <span class="tracking-[3px] border-l-2 border-l-style4 pl-3 select-none"
+                v-if="router.currentRoute.value.path != '/'">簽署新文件</span>
         </div>
 
         <div class="flex justify-center item-center gap-x-7
-         text-style1 font-bold tracking-[3.5px]">
+        font-bold tracking-[3.5px]">
             <div class="text-style2 select-none">邀請他人簽署</div>
+
             <router-link to="/Signature">
-                <div class="hover:text-style5 active:text-style5 focus:text-style5 transition-color duration-300 cursor-pointer select-none"
-                    v-if="router.currentRoute.value.path == '/'">簽署新文件</div>
+                <div class="flex justify-center items-center
+                    bg-gradient-to-t from-gradbg2 to-gradbg1
+                    bg-top hover:bg-bottom bg-bgtrans1 bg-clip-text
+                    text-transparent font-notosans-light cursor-pointer
+                    transition-color duration-200 select-none" v-if="router.currentRoute.value.path == '/'">
+                    簽署新文件
+                </div>
             </router-link>
-            <div class="hover:text-style5 active:text-style5 focus:text-style5 transition-color duration-300 cursor-pointer select-none"
-                @click="toggleloginmodal">登入</div>
+
+            <div class="flex justify-center items-center
+                    bg-gradient-to-t from-gradbg2 to-gradbg1
+                    bg-top hover:bg-bottom bg-bgtrans1 bg-clip-text
+                    text-transparent font-notosans-light cursor-pointer
+                    transition-color duration-200 select-none" @click="toggleloginmodal">
+                登入
+            </div>
         </div>
 
         <teleport to='#modal'>

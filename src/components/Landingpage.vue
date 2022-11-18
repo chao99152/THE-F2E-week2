@@ -6,7 +6,7 @@
             <img src="../assets/img/logotext.png" alt="" class="mt-8">
         </div>
 
-        <router-link to="">
+        <router-link to="/Signature">
             <!-- <div class="absolute top-[50%] left-[57.5%] w-[400px] h-[117px]
             flex justify-center items-center
             bg-gradient-to-r from-gradbg2 to-gradbg1
@@ -24,7 +24,7 @@
                 overflow-hidden whitespace-nowrap text-black w-full">簽署新文件</div>
                 <div class="absolute py-10 indent-28 bg-bg3
                 overflow-hidden whitespace-nowrap text-white
-                w-0 group-hover:w-full transition-all duration-700">簽署新文件</div>
+                w-0 group-hover:w-full transition-all duration-500">簽署新文件</div>
             </div>
         </router-link>
     </div>

@@ -7,4 +7,8 @@
         font-family: notosans-light;
         src: url('../src/assets/fonts/NotoSansTC-Light.otf');
     }
+    @font-face {
+        font-family: inter;
+        src: url('../src/assets/fonts/Inter-Regular.ttf');
+    }
 }

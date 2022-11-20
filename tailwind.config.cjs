@@ -17,6 +17,8 @@ module.exports = {
         'style3': '#A5A39C',
         'style4': '#4D4C52',
         'style5': '#F9B471',
+        'style6': '#D9D9D9',
+
       },
       container: {
         center: true,
@@ -31,16 +33,16 @@ module.exports = {
       },
       fontFamily: {
         'notosans-light': ['notosans-light'],
+        'inter': ['inter'],
       },
       fontSize: {
-        sm: ['clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem)', '1.4'],
-        base: ['clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem)', '1.5'],
-        lg: ['clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem)', '1.4'],
-        xl: ['clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem)', '1.4'],
-        '2xl': ['clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem)', '1.2'],
-        '3xl': ['clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem)', '1.1'],
-        '4xl': ['clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem)', '1'],
-        '5xl': ['clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem)', '1'],
+        'xxs': ['clamp(0.72rem, calc(0.71rem + 0.09vw), 0.77rem)'],
+        'xs': ['clamp(0.87rem, calc(0.83rem + 0.18vw), 0.96rem)'],
+        'sm': ['clamp(1.04rem, calc(0.98rem + 0.31vw), 1.20rem)'],
+        'base': ['clamp(1.25rem, calc(1.15rem + 0.49vw), 1.50rem)'],
+        'md': ['clamp(1.50rem, calc(1.35rem + 0.73vw), 1.88rem)'],
+        'lg': ['clamp(1.80rem, calc(1.59rem + 1.06vw), 2.34rem)'],
+        'xl': ['clamp(2.16rem, calc(1.86rem + 1.50vw), 2.93rem)'],
       },
       maxWidth: {
         'pc': '1440px',
@@ -49,17 +51,23 @@ module.exports = {
         'mobile': '376px'
       },
       height: {
-        'heit1': 'calc(100vh - 60px)'
+        'heit1': 'calc(100vh - 60px)',
+
+        'navH': '60px'
       },
       borderWidth: {
         'bd1': '1px',
       },
-
+      borderColor: {
+        'bc1': '#A5A39C',
+        'bc2': '#EEEDE8',
+      },
       backgroundColor: {
         'bg1': '#FFFAF4',
         'bg2': '#EEEDE8',
         'bg3': '#F9B471',
         'bg4': '#51A8BC',
+        'bg5': '#F9F8F6',
       },
       borderRadius: {
         'px10': '10px',
@@ -79,6 +87,12 @@ module.exports = {
       },
       backgroundSize: {
         'bgtrans1': '100% 200%'
+      },
+      margin: {
+        'navH': '60px'
+      },
+      padding: {
+        'navH': '60px'
       }
     },
   },

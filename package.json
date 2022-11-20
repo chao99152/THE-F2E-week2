@@ -5,16 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "gsap": "^3.11.3",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "vue": "^3.2.41",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.189",
     "@vitejs/plugin-vue": "^3.2.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",

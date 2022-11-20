@@ -11,16 +11,17 @@
                 v-if="router.currentRoute.value.path != '/'">簽署新文件</span>
         </div>
 
-        <div class="flex justify-center item-center gap-x-7
+        <div class="flex justify-center item-center gap-x-6
         font-bold tracking-[3.5px]">
-            <div class="text-style2 select-none">邀請他人簽署</div>
+            <div class="flex justify-center items-center text-style2 select-none -mb-1">邀請他人簽署</div>
 
             <router-link to="/Signature">
                 <div class="flex justify-center items-center
                     bg-gradient-to-t from-gradbg2 to-gradbg1
                     bg-top hover:bg-bottom bg-bgtrans1 bg-clip-text
                     text-transparent font-notosans-light cursor-pointer
-                    transition-color duration-200 select-none" v-if="router.currentRoute.value.path == '/'">
+                    transition-color duration-200 select-none"
+                    v-if="router.currentRoute.value.path == '/'">
                     簽署新文件
                 </div>
             </router-link>

@@ -6,7 +6,7 @@
         flex justify-center items-center 
         text-style3 text-base tracking-[3px]
         rounded-px35 bg-white z-10">
-            <div class="">{{ props.alert_msg }}</div>
+            <div class="">{{ props.notification_msg }}</div>
             <div class="absolute right-4 bottom-4 w-44 h-14
             flex justify-center items-center
             text-white bg-bg4 rounded-full cursor-pointer" @click="emits('togglenotificationmodal')">
@@ -19,9 +19,6 @@
 </template>
 
 <script setup lang="ts">
-
-const props = withDefaults(
-    defineProps<{ alert_msg: String, }>(), { alert_msg: '發生未知錯誤!', }
-)
+const props = defineProps<{ notification_msg: String, }>()
 const emits = defineEmits<{ (e: 'togglenotificationmodal'): void }>()
 </script>

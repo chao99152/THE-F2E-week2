@@ -11,6 +11,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Signature',
         component: () => import(/* webpackChunkName: "about" */ '../components/Signature.vue')
     },
+    {
+        path: '/pdfEditpage/:pdfindex',
+        name: 'PdfEditpage',
+        component: () => import(/* webpackChunkName: "about" */ '../components/pdfEditpage.vue')
+    },
 ]
 
 const router = createRouter({

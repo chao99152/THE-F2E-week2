@@ -19,7 +19,7 @@
             </div> -->
 
             <div class="group absolute top-[50%] left-[57.5%] w-[468px]
-            drop-shadow-shadow1 cursor-pointer text-lg tracking-[27px] font-notosans-light">
+            drop-shadow-shadow1 cursor-pointer text-base tracking-[27px] font-notosans-light">
                 <div class="absolute py-10 indent-28 bg-bg1
                 overflow-hidden whitespace-nowrap text-black w-full">簽署新文件</div>
                 <div class="absolute py-10 indent-28 bg-bg3

@@ -20,10 +20,22 @@ import NavVue from './components/Nav.vue';
 }
 
 .route-enter-active {
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 
 .route-leave-active {
-  transition: all .5s ease;
+  transition: all 1s ease;
+}
+
+
+.scrollbarnone::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbarnone {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
 }
 </style>

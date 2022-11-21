@@ -1,12 +1,9 @@
 <template>
     <div class="relative w-screen h-heit1 pb-20 
-    flex justify-start items-center bg-bg2
-    text-style3">
-        <aside class="h-full w-[400px]
-        bg-white">
-            <div class="h-[15%] px-[33px]
-            flex flex-col justify-center item-start gap-2
-             border-b-bd1 border-bc2">
+    flex justify-start items-center bg-bg2 text-style3">
+        <aside class="h-full w-[400px] bg-white">
+            <div class="h-[15%] px-[33px] border-b-bd1 border-bc2
+            flex flex-col justify-center item-start gap-2">
                 <b class="font-extrabold h-7 px-1">文件名稱</b>
                 <div class="h-7 relative hover:border-bd1 border-bc1 cursor-pointer px-1">
                     <input id="edit_filename" type="text" class="peer outline-none" maxlength="20" value="編輯文件資料">
@@ -17,21 +14,20 @@
             <div class="scrollbarnone overflow-scroll h-[85%] px-[35px]
             flex flex-col justify-start item-start gap-y-3">
                 <div class="mt-5 font-extrabold">我的簽名</div>
-                <div v-for="(img, index) in signature_in_localStorage" class="
-                signature-bg relative h-14 flex justify-center items-center 
-              border-dashed hover:bg-bg1 cursor-pointer">
-                    <img :src="img" alt="" class="max-h-14">
-                    <img src="../assets/img/cancelbtn.png" alt="" @click="toggledeletesignaturemodal(index)"
-                        class="absolute right-2 bottom-4 z-10">
+                <div v-for="(img, index) in signature_in_localStorage" class="signature-bg relative h-14 flex justify-center items-center
+                    border-dashed hover:bg-bg1 cursor-pointer">
+                    <img :src="img" alt="" class="signatureArr max-h-14">
+                    <img src="../assets/img/cancelbtn.png" alt=""
+                        @click="toggledeletesignaturemodal(); selectImg(index)" class="absolute right-2 bottom-4 z-10">
                 </div>
 
                 <div class="signature-bg h-14 flex justify-center items-center 
-              border-dashed hover:bg-bg1 cursor-pointer" @click="togglecreatesignaturemodal">
+                    border-dashed hover:bg-bg1 cursor-pointer" @click="togglecreatesignaturemodal">
                     創建簽名
                     <img src="../assets/img/createsign.png" alt="" class="ml-2 max-w-[21.37px] max-h-[21.37px]">
                 </div>
                 <div class="signature-bg h-14 flex justify-center items-center 
-              border-dashed hover:bg-bg1 cursor-pointer">
+                    border-dashed hover:bg-bg1 cursor-pointer">
                     上傳圖片
                     <img src="../assets/img/uploadimg.png" alt="" class="ml-2 max-w-[21.37px] max-h-[21.37px]">
                 </div>
@@ -45,10 +41,10 @@
             </div>
         </div>
 
-        <footer class="absolute bottom-0 left-0 w-screen h-20 
+        <footer class="absolute bottom-0 left-0 h-20 w-screen
         flex justify-between items-center
         bg-bg1 px-60 font-notosans-light">
-            <div>a</div>
+            <div>進度條</div>
             <div class="flex justify-center items-center">
                 <div class="flex justify-center items-center w-44 h-14 mr-3.5
                     rounded-full bg-white drop-shadow-shadow2 cursor-pointer
@@ -56,7 +52,7 @@
                     transition-all duration-200">
                     取消</div>
 
-                <div class="flex justify-center items-center w-44 h-14
+                <div id="create_file" class="flex justify-center items-center w-44 h-14
                     bg-gradient-to-t from-gradbg2 to-gradbg1
                     bg-top hover:bg-bottom bg-bgtrans1
                     rounded-full drop-shadow-shadow1 cursor-pointer
@@ -80,8 +76,8 @@
             <transition @before-enter="gsap_anim.opacity.Enter" @enter="gsap_anim.opacity.Enter"
                 @leave="gsap_anim.opacity.Leave">
                 <deletesignaturemodal v-if="deletesignature_modalcheck" :indexinSinatureArr="indexinSinatureArr"
-                    @toggledeletesignaturemodal="toggledeletesignaturemodal"
-                    @get_signature_in_localstorage="get_signature_in_localstorage" />
+                    @get_signature_in_localstorage="get_signature_in_localstorage"
+                    @toggledeletesignaturemodal="toggledeletesignaturemodal" />
             </transition>
         </teleport>
     </div>
@@ -105,19 +101,9 @@ get_signature_in_localstorage()
 onBeforeMount(() => {
     let pdfData_in_localstorage: any = JSON.parse(localStorage.getItem('pdfDataArr'))
     if (!pdfData_in_localstorage) router.push({ path: '/' })
-
 })
 
 onMounted(() => {
-    const readBlob = (blob: Blob) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(blob);
-            reader.addEventListener("load", () => resolve(reader.result));
-            reader.addEventListener("error", reject);
-        });
-    }
-
     const printPDF = async (pdfData: any) => {
         const Base64Prefix = "data:application/pdf;base64,";
         pdfjsLib.GlobalWorkerOptions.workerSrc = "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
@@ -130,8 +116,8 @@ onMounted(() => {
 
         // 利用解碼的檔案，載入 PDF 檔及第一頁
         const pdfDoc = await pdfjsLib.getDocument({ data }).promise;
-        
-        const pdfPage = await pdfDoc.getPage(10);
+
+        const pdfPage = await pdfDoc.getPage(1);
 
         // 設定尺寸及產生 canvas
         const viewport = pdfPage.getViewport({ scale: window.devicePixelRatio });
@@ -167,8 +153,8 @@ onMounted(() => {
         canvas.requestRenderAll();
 
         let pdfData_in_localstorage: any = JSON.parse(localStorage.getItem('pdfDataArr'))
-        let pdf_file_str = pdfData_in_localstorage[router.currentRoute.value.params.pdfindex].pdf
-        const pdfData = await printPDF(pdf_file_str);
+        let pdf_file = pdfData_in_localstorage[router.currentRoute.value.params.pdfindex]
+        const pdfData = await printPDF(pdf_file.pdf);
         const pdfImage = await pdfToImage(pdfData);
 
         // 透過比例設定 canvas 尺寸
@@ -178,6 +164,35 @@ onMounted(() => {
 
         // 將 PDF 畫面設定為背景
         canvas.setBackgroundImage(pdfImage, canvas.renderAll.bind(canvas));
+
+        let signatureArr = document.querySelectorAll('.signatureArr')
+        signatureArr.forEach((el) => {
+            el.addEventListener('click', () => {
+                fabric.Image.fromURL(el.src, function (image) {
+
+                    // 設定簽名出現的位置及大小，後續可調整
+                    image.top = 200;
+                    image.scaleX = 0.75;
+                    image.scaleY = 0.75;
+                    canvas.add(image);
+                })
+            })
+        })
+
+        const pdf = new jsPDF();
+        const create_file = document.querySelector("#create_file");
+        create_file.addEventListener("click", () => {
+            // 將 canvas 存為圖片
+            const image = canvas.toDataURL("image/png");
+
+            // 設定背景在 PDF 中的位置及大小
+            const width = pdf.internal.pageSize.width;
+            const height = pdf.internal.pageSize.height;
+            pdf.addImage(image, "png", 0, 0, width, height);
+
+            // 將檔案取名並下載
+            pdf.save(`${pdf_file.name}`);
+        });
     }
 
     show_PDF()
@@ -187,11 +202,9 @@ const createsignature_modalcheck = ref(false)
 const togglecreatesignaturemodal = _.throttle(() => createsignature_modalcheck.value = !createsignature_modalcheck.value, 500, { 'trailing': false })
 
 const indexinSinatureArr = ref(0)
+const selectImg = (index: number) => indexinSinatureArr.value = index
 const deletesignature_modalcheck = ref(false)
-const toggledeletesignaturemodal = _.throttle((index: number) => {
-    deletesignature_modalcheck.value = !deletesignature_modalcheck.value;
-    indexinSinatureArr.value = index
-}, 500, { 'trailing': false })
+const toggledeletesignaturemodal = _.throttle(() => deletesignature_modalcheck.value = !deletesignature_modalcheck.value, 500, { 'trailing': false })
 </script>
 
 <style>

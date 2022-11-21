@@ -20,7 +20,7 @@
         <footer class="absolute bottom-0 left-0 w-screen h-20 
         flex justify-between items-center
         bg-bg1 px-60 font-notosans-light">
-            <div>a</div>
+            <div>進度條</div>
             <div class="flex justify-center items-center">
                 <div class="flex justify-center items-center w-44 h-14 mr-3.5
                     rounded-full bg-white drop-shadow-shadow2 cursor-pointer
@@ -29,10 +29,11 @@
                     取消</div>
 
                 <div class="w-44 h-14 flex justify-center items-center
-                    rounded-full bg-bg2 drop-shadow-shadow2 cursor-pointer
+                    rounded-full bg-bg2 drop-shadow-shadow2
                   text-white tracking-[3px] font-notosans-light
-                    transition-all duration-200" @click="toeditPDFpage" :class="(checkfileSelected && !upload_newFile) ? ['bg-gradient-to-t', 'from-gradbg2',
-                    'to-gradbg1', 'bg-top', 'hover:bg-bottom', 'bg-bgtrans1', 'drop-shadow-shadow1'] : ''">
+                    transition-all duration-200" @click="toeditPDFpage"
+                    :class="(checkfileSelected && !upload_newFile) ? ['bg-gradient-to-t', 'from-gradbg2',
+                    'to-gradbg1', 'bg-top', 'hover:bg-bottom', 'bg-bgtrans1', 'drop-shadow-shadow1', 'cursor-pointer'] : ''">
                     開啟文件
                 </div>
             </div>

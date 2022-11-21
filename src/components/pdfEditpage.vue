@@ -39,8 +39,10 @@
             </div>
         </aside>
 
-        <div class="scrollbarnone relative h-full w-full overflow-scroll">
-            <canvas id="pdfcanvas" class="ml-52"></canvas>
+        <div class="h-full w-full flex justify-center items-center">
+            <div class="scrollbarnone w-3/4 h-full py-8 overflow-scroll">
+                <canvas id="pdfcanvas"></canvas>
+            </div>
         </div>
 
         <footer class="absolute bottom-0 left-0 w-screen h-20 
@@ -88,7 +90,7 @@
 <script setup lang="ts">
 import createSignature from './modal/createSignature.vue'
 import deletesignaturemodal from './modal/deletesignaturemodal.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeMount } from 'vue'
 import _ from 'lodash'
 import gsap_anim from '../composable/gsap'
 import router from '../router'
@@ -99,6 +101,12 @@ const get_signature_in_localstorage = () => {
     if (datainlocalStorage) signature_in_localStorage.value = JSON.parse(datainlocalStorage)
 }
 get_signature_in_localstorage()
+
+onBeforeMount(() => {
+    let pdfData_in_localstorage: any = JSON.parse(localStorage.getItem('pdfDataArr'))
+    if (!pdfData_in_localstorage) router.push({ path: '/' })
+
+})
 
 onMounted(() => {
     const readBlob = (blob: Blob) => {
@@ -121,10 +129,8 @@ onMounted(() => {
         const data = window.atob(pdfData.substring(Base64Prefix.length));
 
         // 利用解碼的檔案，載入 PDF 檔及第一頁
-        const pdfDoc = await pdfjsLib.getDocument({ data }).promise;
-        // console.log(pdfDoc)
+        const pdfDoc = await pdfjsLib.getDocument({ pdfData }).promise;
         const pdfPage = await pdfDoc.getPage(1);
-        // console.log(pdfPage)
 
         // 設定尺寸及產生 canvas
         const viewport = pdfPage.getViewport({ scale: window.devicePixelRatio });
@@ -146,7 +152,7 @@ onMounted(() => {
 
     const pdfToImage = async (pdfData) => {
         // 設定 PDF 轉為圖片時的比例
-        const scale = 1 / window.devicePixelRatio;
+        const scale = 1 / window.devicePixelRatio
         // 回傳圖片
         return new fabric.Image(pdfData, {
             id: "renderPDF",
@@ -154,6 +160,7 @@ onMounted(() => {
             scaleY: scale,
         });
     }
+
 
     const show_PDF = async () => {
         const canvas = new fabric.Canvas(document.getElementById('pdfcanvas'));
@@ -165,9 +172,9 @@ onMounted(() => {
         const pdfImage = await pdfToImage(pdfData);
 
         // 透過比例設定 canvas 尺寸
-        
+
         canvas.setWidth(pdfImage.width / window.devicePixelRatio);
-        canvas.setHeight(pdfImage.height / window.devicePixelRatio + 120);
+        canvas.setHeight(pdfImage.height / window.devicePixelRatio + 100);
 
         // 將 PDF 畫面設定為背景
         canvas.setBackgroundImage(pdfImage, canvas.renderAll.bind(canvas));
@@ -182,7 +189,7 @@ const togglecreatesignaturemodal = _.throttle(() => createsignature_modalcheck.v
 const indexinSinatureArr = ref(0)
 const deletesignature_modalcheck = ref(false)
 const toggledeletesignaturemodal = _.throttle((index: number) => {
-    deletesignature_modalcheck.value = !deletesignature_modalcheck.value
+    deletesignature_modalcheck.value = !deletesignature_modalcheck.value;
     indexinSinatureArr.value = index
 }, 500, { 'trailing': false })
 </script>

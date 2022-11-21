@@ -12,7 +12,7 @@
         </label>
         <div v-else class="w-full h-full bg-white select-none
                 text-style3 text-sm font-notosans-light">
-            <div v-if="!props.pdfData" class="w-full h-full 
+            <div v-if="!props.pdfData.length" class="w-full h-full 
             flex justify-center items-center tracking-[3px]">
                 尚未上傳任何文件!
             </div>
@@ -83,22 +83,19 @@ import moment from 'moment'
 
 const props = defineProps<{
     upload_newFile: Boolean,
-    pdfData: Object
+    pdfData: Array<object>
 }>()
-const emits = defineEmits<{
-    (e: 'compeleteload'): void
-}>()
+const emits = defineEmits<{ (e: 'compeleteload'): void }>()
 
 
 const savePDFtolocalStorage = async () => {
-    let uploadinput: any = document.getElementById("upload_pdf_box")
-    let updatefile = uploadinput.files[0];
+    let updatefile = document.getElementById("upload_pdf_box").files[0];
     const reader = new FileReader(); //建立FileReader 監聽 Load 事件
     reader.readAsDataURL(updatefile);
     reader.addEventListener("load", (event) => {
         return new Promise((resolve, reject) => {
             // console.log(updatefile) //name, size, type
-            // console.log(event.target?.result) //name, size, type
+            // console.log(event.target?.result)
             if (updatefile.type != "application/pdf") return togglenotificationmodal('您的檔案不是PDF檔!')
             if (updatefile.size / 1024 >= 10000) return togglenotificationmodal('您的檔案太大了!')
 

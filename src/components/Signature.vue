@@ -7,7 +7,7 @@
                 <div class="w-full h-full flex justify-center items-center 
                     rounded-t-px35 transition-all duration-300"
                     :class="upload_newFile ? ['text-style5', 'bg-white', 'drop-shadow-shadow3', 'select-none'] : ['text-style1', 'cursor-pointer']"
-                    @click="upload_newFile = true">上傳新文件</div>
+                    @click="upload_newFile = true, checkfileSelected = false">上傳新文件</div>
                 <div class="w-full h-full flex justify-center items-center 
                     rounded-t-px35 transition-all duration-300"
                     :class="upload_newFile ? ['text-style1', 'cursor-pointer'] : ['text-style5', 'bg-white', 'drop-shadow-shadow4']"
@@ -28,12 +28,11 @@
                     transition-all duration-200">
                     取消</div>
 
-                <div class="flex justify-center items-center w-44 h-14
-                    bg-gradient-to-t from-gradbg2 to-gradbg1
-                    bg-top hover:bg-bottom bg-bgtrans1
-                    rounded-full drop-shadow-shadow1 cursor-pointer
+                <div class="w-44 h-14 flex justify-center items-center
+                    rounded-full bg-bg2 drop-shadow-shadow2 cursor-pointer
                   text-white tracking-[3px] font-notosans-light
-                    transition-all duration-200" @click="toeditPDFpage">
+                    transition-all duration-200" @click="toeditPDFpage" :class="(checkfileSelected && !upload_newFile) ? ['bg-gradient-to-t', 'from-gradbg2',
+                    'to-gradbg1', 'bg-top', 'hover:bg-bottom', 'bg-bgtrans1', 'drop-shadow-shadow1'] : ''">
                     開啟文件
                 </div>
             </div>
@@ -47,23 +46,29 @@
 import NotificationmodalVue from './modal/Notificationmodal.vue';
 import uploadcompVue from './uploadcomp.vue';
 
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import _ from 'lodash'
 import gsap_anim from '../composable/gsap'
 import router from '../router';
 
 const upload_newFile = ref(true)
 
-const pdfData = ref([{
-    pdf: '',
-    name: '',
-    uploadtime: '',
-    lastopentime: '',
-}])
+const checkfileSelected = ref(false)
+watchEffect(() => {
+    // let pdfdata_Arr = document.getElementsByName('pdf_Datas')
+    // if (!pdfdata_Arr.length) return
+    // let select_file = pdfdata_Arr.filter(data => data.checked)
+    // if (select_file.length) checkfileSelected.value = true
+})
 
+
+const pdfData = ref([])
 const get_pdfdata_in_localstorage = () => {
     let pdfinlocalStorage = localStorage.getItem('pdfDataArr')
-    if (pdfinlocalStorage) pdfData.value = JSON.parse(pdfinlocalStorage)
+    if (pdfinlocalStorage) {
+        checkfileSelected.value = true
+        pdfData.value = JSON.parse(pdfinlocalStorage)
+    }
 }
 get_pdfdata_in_localstorage()
 
@@ -73,6 +78,7 @@ const compeleteload = () => {
 }
 
 const toeditPDFpage = () => {
+    if (!checkfileSelected.value) return
     let pdfdata_Arr = document.getElementsByName('pdf_Datas')
     pdfdata_Arr.forEach((data: any, index) => {
         if (data.checked) {

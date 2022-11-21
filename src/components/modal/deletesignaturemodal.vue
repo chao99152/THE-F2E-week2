@@ -35,8 +35,8 @@
 <script setup lang="ts">
 const props = defineProps<{ indexinSinatureArr: Number }>()
 const emits = defineEmits<{
-    (e: 'toggledeletesignaturemodal'): any
-    (e: 'get_signature_in_localstorage'): void
+    (e: 'get_signature_in_localstorage'): void,
+    (e: 'toggledeletesignaturemodal'): void
 }>()
 
 const delete_signature = async () => {

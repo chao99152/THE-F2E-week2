@@ -36,6 +36,7 @@ module.exports = {
         'inter': ['inter'],
       },
       fontSize: {
+     
         'xxs': ['clamp(0.72rem, calc(0.71rem + 0.09vw), 0.77rem)'],
         'xs': ['clamp(0.87rem, calc(0.83rem + 0.18vw), 0.96rem)'],
         'sm': ['clamp(1.04rem, calc(0.98rem + 0.31vw), 1.20rem)'],

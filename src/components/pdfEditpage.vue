@@ -62,7 +62,7 @@
                     rounded-full drop-shadow-shadow1 cursor-pointer
                   text-white tracking-[3px] font-notosans-light
                     transition-all duration-200">
-                    開啟文件
+                    創建文件
                 </div>
             </div>
         </footer>
@@ -129,8 +129,9 @@ onMounted(() => {
         const data = window.atob(pdfData.substring(Base64Prefix.length));
 
         // 利用解碼的檔案，載入 PDF 檔及第一頁
-        const pdfDoc = await pdfjsLib.getDocument({ pdfData }).promise;
-        const pdfPage = await pdfDoc.getPage(1);
+        const pdfDoc = await pdfjsLib.getDocument({ data }).promise;
+        
+        const pdfPage = await pdfDoc.getPage(10);
 
         // 設定尺寸及產生 canvas
         const viewport = pdfPage.getViewport({ scale: window.devicePixelRatio });
@@ -160,7 +161,6 @@ onMounted(() => {
             scaleY: scale,
         });
     }
-
 
     const show_PDF = async () => {
         const canvas = new fabric.Canvas(document.getElementById('pdfcanvas'));

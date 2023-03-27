@@ -12,7 +12,7 @@
                 <div class="w-44 h-14 flex justify-center items-center
                           bg-bg1 rounded-full drop-shadow-shadow2
                           text-style1 hover:text-style5 active:text-style5 tracking-[5px] cursor-pointer active:scale-95"
-                    @click="emits('toggledeletesignaturemodal')">
+                    @click="emits('toggledeletesignaturemodal', $event)">
                     取消
                 </div>
                 <div class="w-44 h-14 ml-4
@@ -34,19 +34,17 @@
 const props = defineProps<{ indexinSinatureArr: Number }>()
 const emits = defineEmits<{
     (e: 'get_signature_in_localstorage'): void,
-    (e: 'toggledeletesignaturemodal'): void
+    (e: 'toggledeletesignaturemodal', event: Event, index?: number): void
 }>()
 
-const delete_signature = async () => {
+const delete_signature = async (e: Event) => {
     await new Promise((resolve) => {
         let signinlocalStorage: any = localStorage.getItem('signature')
         let signArr = JSON.parse(signinlocalStorage)
         signArr.splice(props.indexinSinatureArr, 1)
         let str_signArr = JSON.stringify(signArr)
         localStorage.setItem('signature', str_signArr)
-        resolve(
-            emits('toggledeletesignaturemodal'),
-            emits('get_signature_in_localstorage')
+        resolve(emits('get_signature_in_localstorage'), emits('toggledeletesignaturemodal', e)
         )
     })
 }

@@ -86,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import Notificationmodal from '../modal/Notificationmodal.vue'
+import Notificationmodal from './modal/Notificationmodal.vue'
 import uploadProgress from './modal/uploadProgress.vue'
 
 import { ref } from 'vue'

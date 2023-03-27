@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import NotificationmodalVue from '../modal/Notificationmodal.vue';
+import NotificationmodalVue from './modal/Notificationmodal.vue';
 import uploadcompVue from './uploadcomp.vue';
 
 import { ref, watchEffect } from 'vue'

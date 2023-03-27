@@ -14,8 +14,10 @@
                 <div v-for="(img, index) in signature_in_localStorage" @click="addSigntoPDF(img)"
                     class="signature-bg relative h-14 flex justify-center items-center border-dashed hover:bg-bg1 cursor-pointer">
                     <img :src="img" alt="" class="signatureArr max-h-14">
-                    <img src="../../assets/img/cancelbtn.png" alt=""
-                        @click="toggledeletesignaturemodal(); selectImg(index)" class="absolute right-2 bottom-4 z-10">
+                    <div class="h-full w-8 absolute right-0 bottom-0 grid justify-start items-center z-10 pointer-events-auto"
+                        @click="toggledeletesignaturemodal($event, index)">
+                        <img src="../../assets/img/cancelbtn.png" alt="" class="">
+                    </div>
                 </div>
 
                 <div class="signature-bg h-14 flex justify-center items-center border-dashed hover:bg-bg1 cursor-pointer"
@@ -231,9 +233,13 @@ const createsignature_modalcheck = ref(false)
 const togglecreatesignaturemodal = _.throttle(() => createsignature_modalcheck.value = !createsignature_modalcheck.value, 500, { 'trailing': false })
 
 const indexinSinatureArr = ref(0)
-const selectImg = (index: number) => indexinSinatureArr.value = index
 const deletesignature_modalcheck = ref(false)
-const toggledeletesignaturemodal = _.throttle(() => deletesignature_modalcheck.value = !deletesignature_modalcheck.value, 500, { 'trailing': false })
+const toggledeletesignaturemodal = _.throttle((e: Event, index?: number) => {
+    e.stopPropagation();
+    if (!isNaN(<number>index)) { indexinSinatureArr.value = <number>index }
+    deletesignature_modalcheck.value = !deletesignature_modalcheck.value
+}
+    , 500, { 'trailing': false })
 </script>
 
 <style>

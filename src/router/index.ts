@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -7,19 +7,20 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Landingpage.vue')
     },
     {
-        path: '/signature',
-        name: 'Signature',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Signature.vue')
+        path: '/uploadpage',
+        name: 'Uploadpage',
+        component: () => import(/* webpackChunkName: "about" */ '../components/uploadpage/Uploadpage.vue')
     },
     {
-        path: '/pdfEditpage/:pdfindex',
+        path: '/pdfEditpage/:pdfID',
         name: 'PdfEditpage',
-        component: () => import(/* webpackChunkName: "about" */ '../components/pdfEditpage.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../components/pdfpage/pdfEditpage.vue')
     },
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
+    // history: createWebHashHistory(),
     routes
 })
 

@@ -36,7 +36,7 @@ module.exports = {
         'inter': ['inter'],
       },
       fontSize: {
-     
+
         'xxs': ['clamp(0.72rem, calc(0.71rem + 0.09vw), 0.77rem)'],
         'xs': ['clamp(0.87rem, calc(0.83rem + 0.18vw), 0.96rem)'],
         'sm': ['clamp(1.04rem, calc(0.98rem + 0.31vw), 1.20rem)'],
@@ -44,6 +44,9 @@ module.exports = {
         'md': ['clamp(1.50rem, calc(1.35rem + 0.73vw), 1.88rem)'],
         'lg': ['clamp(1.80rem, calc(1.59rem + 1.06vw), 2.34rem)'],
         'xl': ['clamp(2.16rem, calc(1.86rem + 1.50vw), 2.93rem)'],
+      },
+      width: {
+        'pc': '1440px',
       },
       maxWidth: {
         'pc': '1440px',
@@ -53,7 +56,7 @@ module.exports = {
       },
       height: {
         'heit1': 'calc(100vh - 60px)',
-
+        'heit2': 'calc(100vh - 140px)',
         'navH': '60px'
       },
       borderWidth: {
@@ -94,6 +97,15 @@ module.exports = {
       },
       padding: {
         'navH': '60px'
+      },
+      animation: {
+        loading: 'loading 2s ease forwards'
+      },
+      keyframes: {
+        loading: {
+          '0%': { height: '100%' },
+          '100%': { height: '0%' },
+        }
       }
     },
   },

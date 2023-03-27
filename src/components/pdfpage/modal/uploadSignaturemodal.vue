@@ -1,13 +1,12 @@
 <template>
     <div class="fixed top-0 left-0 w-screen h-screen 
-    flex justify-center items-center 
-    z-30 font-notosans-light">
+                flex justify-center items-center 
+                z-30 font-notosans-light">
         <div class="relative pc:w-[830px] pc:h-[550px] bg-white
-        flex flex-col justify-between items-center py-4 px-6
-        text-style3 rounded-px35 z-10 select-none">
+                    flex flex-col justify-between items-center py-4 px-6
+                  text-style3 rounded-px35 z-10 select-none">
             <div class="text-xs tracking-[5px] my-2">在框格內簽下大名!</div>
-            <div id="upload_sigature_box" class="createsinature w-[760px] h-[360px] outline-none">
-            </div>
+            <div id="upload_sigature_box" class="createsinature w-[760px] h-[360px] outline-none"></div>
 
             <div class="w-full flex justify-between items-center text-sm tracking-[5px] px-2">
                 <div class="text-style1 tracking-[3px] cursor-pointer" @click="reset">清除</div>

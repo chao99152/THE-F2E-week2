@@ -9,7 +9,7 @@
 
 > 精神時光屋第二週挑戰，快速方便的線上簽名，以簡約休閒風格設計的點點簽!<br/>
 > UI designer: <a href="https://noarzxcvbnm.github.io/PersonalWebsite/" target="_blank">小菜</a>
-<br/>
+> <br/>
 
 ## 系統說明
 
@@ -34,7 +34,7 @@ npm run build
 
 > /src/components 依 router 頁面存放各組件<br/>
 > /src/composable gsap 動畫組件
-<br/>
+> <br/>
 
 ## 使用技術
 
@@ -43,4 +43,5 @@ npm run build
 > Vue router<br/>
 > typescript<br/>
 > GSAP <br/>
-> tailwindCSS
+> tailwindCSS <br/>
+> PDF.js, fabric.js, jsPDF

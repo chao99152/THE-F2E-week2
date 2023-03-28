@@ -33,19 +33,20 @@
 <script setup lang="ts">
 const props = defineProps<{ indexinSinatureArr: Number }>()
 const emits = defineEmits<{
-    (e: 'get_signature_in_localstorage'): void,
+    (e: 'get_signature_in_localstorage'): void
     (e: 'toggledeletesignaturemodal', event: Event, index?: number): void
 }>()
 
-const delete_signature = async (e: Event) => {
-    await new Promise((resolve) => {
-        let signinlocalStorage: any = localStorage.getItem('signature')
-        let signArr = JSON.parse(signinlocalStorage)
-        signArr.splice(props.indexinSinatureArr, 1)
-        let str_signArr = JSON.stringify(signArr)
-        localStorage.setItem('signature', str_signArr)
-        resolve(emits('get_signature_in_localstorage'), emits('toggledeletesignaturemodal', e)
-        )
+const delete_signature = (e: Event) => {
+    return new Promise((resolve) => {
+        let signinlocalStorage = localStorage.getItem('signature');
+        let signArr = JSON.parse(<string>signinlocalStorage);
+        signArr.splice(props.indexinSinatureArr, 1);
+        let str_signArr = JSON.stringify(signArr);
+        localStorage.setItem('signature', str_signArr);
+        emits('get_signature_in_localstorage');
+        emits('toggledeletesignaturemodal', e);
+        resolve('done')
     })
 }
 </script>

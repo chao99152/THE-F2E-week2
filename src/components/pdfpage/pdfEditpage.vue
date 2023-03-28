@@ -216,7 +216,7 @@ const downloadPDF = async () => {
     })
 
     // 將檔案取名並下載
-    pdf.save(`${fileName.value}`);
+    pdf.save(`${fileName.value}.pdf`);
 }
 
 const addSigntoPDF = (src: string) => {

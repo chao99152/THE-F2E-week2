@@ -109,24 +109,21 @@ const savePDFtolocalStorage = async () => {
     let updatefile = document.getElementById("upload_pdf_box").files[0];
     const reader = new FileReader(); //建立FileReader 監聽 Load 事件
     reader.readAsDataURL(updatefile);
-    reader.addEventListener('progress', (event) => {
-        if (updatefile.type != "application/pdf") return togglenotificationmodal('您的檔案不是PDF檔!')
-        if (updatefile.size >= 5000000) return togglenotificationmodal('檔案太大了!')
-
+    if (updatefile.type != "application/pdf") return togglenotificationmodal('您的檔案不是PDF檔!')
+    if (updatefile.size / 1024 / 1024 > 5) return togglenotificationmodal('檔案太大了!')
+    reader.addEventListener('progress', () => {
         toggleisUploading()
         const countdown = setInterval(() => {
             if (uploading_percent.value < 100) { uploading_percent.value += 1 }
         }, 20)
         setTimeout(() => { clearInterval(countdown); toggleisUploading() }, 2000)
     })
-    reader.addEventListener("load", (event) => {
-        console.log(event)
+    reader.addEventListener("load", event => {
         return new Promise((resolve) => {
-            // upload_pdf_box
             let pdf_inlocalStorage = localStorage.getItem('pdfDataArr')
             let new_pdfData = {
                 pdf: event.target?.result,
-                name: updatefile.name,
+                name: updatefile.name.slice(0, -4),
                 uploadtime: new Date(),
                 lastopentime: 0,
                 pdf_id: 0

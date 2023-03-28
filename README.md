@@ -4,7 +4,8 @@
 
 ## 作品說明
 
-> 精神時光屋第二週挑戰，快速方便的線上簽名，以簡約休閒風格設計的點點簽!<br/> > <a href="https://noarzxcvbnm.github.io/PersonalWebsite/" target="_blank">UI design</a>
+> 精神時光屋第二週挑戰，快速方便的線上簽名，以簡約休閒風格設計的點點簽!<br/>
+> UI designer: <a href="https://noarzxcvbnm.github.io/PersonalWebsite/" target="_blank">小菜</a>
 
 ## 系統說明
 

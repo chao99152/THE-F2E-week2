@@ -1,11 +1,11 @@
 import gsap from 'gsap';
 
 export default {
-    beforeEnter: (el, done) => {
-        el.style.opacity = 0
-        el.style.transform = 'scale(1.05)'
+    beforeEnter: (el: HTMLElement) => {
+        el.style.opacity = '0',
+            el.style.transform = 'scale(1.05)'
     },
-    Enter: (el, done) => {
+    Enter: (el: HTMLElement, done: gsap.Callback) => {
         gsap.to(el, {
             duration: .55,
             opacity: 1,
@@ -14,7 +14,7 @@ export default {
         })
     },
 
-    Enter_delay: (el, done) => {
+    Enter_delay: (el: HTMLElement, done: gsap.Callback) => {
         gsap.to(el, {
             duration: 1,
             opacity: 1,
@@ -23,7 +23,7 @@ export default {
         })
     },
 
-    Leave: (el, done) => {
+    Leave: (el: HTMLElement, done: gsap.Callback) => {
         gsap.to(el, {
             duration: .55,
             opacity: 0,
@@ -32,5 +32,3 @@ export default {
         })
     }
 }
-
-

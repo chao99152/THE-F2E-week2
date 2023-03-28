@@ -1,13 +1,13 @@
 import gsap from 'gsap';
 
 export default {
-    beforeEnter: (el) => {
-        el.style.opacity = 0
+    beforeEnter: (el: HTMLElement) => {
+        el.style.opacity = '0'
     },
-    beforeLeave: (el) => {
+    beforeLeave: (el: HTMLElement) => {
         el.style.display = 'none'
     },
-    Enter: (el, done) => {
+    Enter: (el: HTMLElement, done: gsap.Callback) => {
         gsap.to(el, {
             position: 'relative',
             duration: .75,
@@ -15,7 +15,7 @@ export default {
             onComplete: done,
         })
     },
-    Leave: (el, done) => {
+    Leave: (el: HTMLElement, done: gsap.Callback) => {
         gsap.to(el, {
             position: 'absolute',
             duration: .5,

@@ -18,7 +18,7 @@ npm run dev
 
 ## 資料夾說明
 
-> /src/components 依頁面存放各組件<br/>
+> /src/components 依router頁面存放各組件<br/>
 > /src/composable gsap動畫組件
 
 ## 使用技術 
